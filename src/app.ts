@@ -1,17 +1,26 @@
 //class 
+// public, private and read only
 class Invoice {
-    client: string;
-    details: string;
-    amount: number;
+//   readonly  client: string;
+//    private details: string;
+//     public amount: number;
 
-    constructor(c: string, d: string, a: number) {
-        this.client = c;
-        this.details = d;
-        this.amount = a;
+    //readonly allows us  read value inside or outside the class but we cant change it.
+  //private allows us to read and change inside of the class
+  //public allows us to read and change outdienthe class
+  
+
+    constructor(
+        readonly client: string,
+        private details: string,
+        public amount: number,
+    ){
+
     }
+    
 
     format() {
-        return `$${this.client} owes ${this.amount} for ${this.details}`
+        return `${this.client} owes £${this.amount} for ${this.details}`
     }
 }
 const inOne = new Invoice('Mario', 'work on mario website ', 250 );
@@ -20,7 +29,11 @@ console.log(inOne, inTwo);
 
 let invoices: Invoice[] = [];
 invoices.push(inOne, inTwo);
-console.log(invoices)
+console.log(invoices);
+
+invoices.forEach(inv => {
+    console.log(inv.client, inv.amount, inv.format())
+})
 
 // The DOM & Type Casting
 // const anchor = document.querySelector('a')!;
