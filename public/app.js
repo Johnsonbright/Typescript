@@ -1,4 +1,5 @@
 import { Invoice } from './classes/invoice.js';
+import { ListTemplate } from './classes/ListTemplate.js';
 import { Payment } from './classes/Payment.js';
 let docOne;
 let docTwo;
@@ -23,6 +24,8 @@ const type = document.querySelector('#type');
 const toFrom = document.querySelector('#tofrom');
 const details = document.querySelector('#details');
 const amount = document.querySelector('#amount');
+const ul = document.querySelector('ul');
+const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let docs;
@@ -32,38 +35,5 @@ form.addEventListener('submit', (e) => {
     else {
         docs = new Payment(toFrom.value, details.value, amount.valueAsNumber);
     }
-    console.log(docs);
+    list.render(docs, type.value, 'end');
 });
-// // Interfaces
-// interface IsPerson {
-//     name: string;
-//     age: number;
-//     speak(a: string): void;
-//     spend(b: number): number;
-// }
-// const me:IsPerson = {
-//     name: `shaun`,
-//     age: 50,
-//     speak(text: string): void {
-//         console.log(text);
-//     },
-//     spend(amount: number): number {
-//         console.log('i spent ' , amount);
-//         return amount;
-//     }, 
-// };
-// console.log(me);
-// const greetPerson = (person: IsPerson) => {
-//     console.log('hello', person.name);
-// };
-// greetPerson(me);
-// //class 
-// const inOne = new Invoice('Mario', 'work on mario website ', 250 );
-// const inTwo = new Invoice('Ife', 'work on ife website ', 300 );
-// console.log(inOne, inTwo);
-// let invoices: Invoice[] = [];
-// invoices.push(inOne, inTwo);
-// console.log(invoices);
-// invoices.forEach(inv => {
-//     console.log(inv.client, inv.amount, inv.format())
-// })
