@@ -1,14 +1,14 @@
 import { HardFormatter } from "../Interfaces/HardFormatter.js";
 
 // classes
-export class Invoice  implements HardFormatter{
+export class Payment  implements HardFormatter{
 constructor(
-readonly client: string,
+readonly recipient: string,
 private details: string,
 public amount: number,
 ){}
 
 format() {
-    return `${this.client} owes ${this.amount} for this ${this.details}`
+    return `${this.recipient} is owed ${this.amount} for this ${this.details}`
 }
 }
