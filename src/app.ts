@@ -39,15 +39,19 @@ const amount = document.querySelector('#amount')! as HTMLInputElement;
 const ul = document.querySelector('ul')!;
 const list = new ListTemplate(ul);
 
+
 form.addEventListener('submit', (e: Event)=> {
     e.preventDefault();
+
+let values: [string, string, number];
+   values = [toFrom.value, details.value, amount.valueAsNumber];
     
     let docs: HardFormatter;
     if(type.value === 'invoice'){
-        docs= new Invoice (toFrom.value, details.value, amount.valueAsNumber)
+        docs= new Invoice (...values)
     }
     else {
-        docs = new Payment(toFrom.value, details.value, amount.valueAsNumber)
+        docs = new Payment(...values)
     }
 
  list.render(docs, type.value, 'end')
@@ -82,3 +86,7 @@ const doc4: Resource<string[]> = {
     data: ['bread', 'milk', 'toilet roll']
 }
 console.log(doc3, doc4);
+
+//tuples
+let tup: [string, string, boolean, number] = ['yoshi', 'bolanle', false , 50];
+// the position of that data type is constant. it can not be changed to a different data type.

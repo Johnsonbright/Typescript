@@ -28,12 +28,14 @@ const ul = document.querySelector('ul');
 const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    let values;
+    values = [toFrom.value, details.value, amount.valueAsNumber];
     let docs;
     if (type.value === 'invoice') {
-        docs = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+        docs = new Invoice(...values);
     }
     else {
-        docs = new Payment(toFrom.value, details.value, amount.valueAsNumber);
+        docs = new Payment(...values);
     }
     list.render(docs, type.value, 'end');
 });
@@ -63,3 +65,6 @@ const doc4 = {
     data: ['bread', 'milk', 'toilet roll']
 };
 console.log(doc3, doc4);
+//tuples
+let tup = ['yoshi', 'bolanle', false, 50];
+// the position of that data type is constant. it can not be changed to a different data type.
