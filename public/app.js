@@ -37,7 +37,15 @@ form.addEventListener('submit', (e) => {
     }
     list.render(docs, type.value, 'end');
 });
-// GENERICS
+// ENUMS
+var resoureceType;
+(function (resoureceType) {
+    resoureceType[resoureceType["BOOK"] = 0] = "BOOK";
+    resoureceType[resoureceType["AUTHOR"] = 1] = "AUTHOR";
+    resoureceType[resoureceType["FILM"] = 2] = "FILM";
+    resoureceType[resoureceType["DIRECTOR"] = 3] = "DIRECTOR";
+    resoureceType[resoureceType["PERSON"] = 4] = "PERSON";
+})(resoureceType || (resoureceType = {}));
 const addUID = (obj) => {
     let uid = Math.floor(Math.random() * 100);
     return Object.assign(Object.assign({}, obj), { uid });
@@ -46,12 +54,12 @@ let doc1 = addUID({ name: 'yoshi', age: 67 });
 console.log(doc1.age);
 const doc3 = {
     uid: 1,
-    resourceName: 'Person',
+    resourceType: resoureceType.AUTHOR,
     data: { name: 'shayo' }
 };
 const doc4 = {
     uid: 2,
-    resourceName: 'shoppingList',
+    resourceType: resoureceType.BOOK,
     data: ['bread', 'milk', 'toilet roll']
 };
 console.log(doc3, doc4);
