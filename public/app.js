@@ -1,4 +1,4 @@
-import { Invoice } from './classes/invoice.js';
+import { Invoice } from './classes/Invoice.js';
 import { ListTemplate } from './classes/ListTemplate.js';
 import { Payment } from './classes/Payment.js';
 let docOne;
@@ -37,3 +37,21 @@ form.addEventListener('submit', (e) => {
     }
     list.render(docs, type.value, 'end');
 });
+// GENERICS
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+let doc1 = addUID({ name: 'yoshi', age: 67 });
+console.log(doc1.age);
+const doc3 = {
+    uid: 1,
+    resourceName: 'Person',
+    data: { name: 'shayo' }
+};
+const doc4 = {
+    uid: 2,
+    resourceName: 'shoppingList',
+    data: ['bread', 'milk', 'toilet roll']
+};
+console.log(doc3, doc4);
