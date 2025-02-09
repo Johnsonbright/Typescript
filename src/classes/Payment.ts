@@ -9,6 +9,6 @@ public amount: number,
 ){}
 
 format() {
-    return `${this.recipient} is owed ${this.amount} for this ${this.details}`
+    return `${this.recipient} is owed ${this.amount} for this ${this.details}.`
 }
 }
